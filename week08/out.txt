@@ -1,0 +1,58 @@
+## value值越大，get，set性能会有所下降，通过Pipeline可以增加其吞吐量
+
+[root@localhost src]# bash test1.sh
+datasize = 10 not using Pipeline
+SET: 18368.85 requests per second, p50=0.039 msec
+GET: 19944.16 requests per second, p50=0.039 msec
+
+datasize = 10 using Pipeline -P 16
+SET: 152439.02 requests per second, p50=0.087 msec
+GET: 171526.58 requests per second, p50=0.071 msec
+
+datasize = 20 not using Pipeline
+SET: 19623.23 requests per second, p50=0.039 msec
+GET: 20449.90 requests per second, p50=0.039 msec
+
+datasize = 20 using Pipeline -P 16
+SET: 154798.75 requests per second, p50=0.079 msec
+GET: 171821.30 requests per second, p50=0.071 msec
+
+datasize = 50 not using Pipeline
+SET: 19516.00 requests per second, p50=0.039 msec
+GET: 19988.01 requests per second, p50=0.039 msec
+
+datasize = 50 using Pipeline -P 16
+SET: 141043.72 requests per second, p50=0.087 msec
+GET: 152671.77 requests per second, p50=0.079 msec
+
+datasize = 100 not using Pipeline
+SET: 19293.85 requests per second, p50=0.039 msec
+GET: 19596.31 requests per second, p50=0.039 msec
+
+datasize = 100 using Pipeline -P 16
+SET: 143678.17 requests per second, p50=0.087 msec
+GET: 160256.41 requests per second, p50=0.079 msec
+
+datasize = 200 not using Pipeline
+SET: 19817.68 requests per second, p50=0.039 msec
+GET: 19798.06 requests per second, p50=0.039 msec
+
+datasize = 200 using Pipeline -P 16
+SET: 142653.36 requests per second, p50=0.087 msec
+GET: 151745.08 requests per second, p50=0.079 msec
+
+datasize = 1000 not using Pipeline
+SET: 18301.61 requests per second, p50=0.047 msec
+GET: 19271.54 requests per second, p50=0.039 msec
+
+datasize = 1000 using Pipeline -P 16
+SET: 116009.28 requests per second, p50=0.111 msec
+GET: 138696.25 requests per second, p50=0.087 msec
+
+datasize = 5000: not using Pipeline
+SET: 17787.26 requests per second, p50=0.047 msec
+GET: 18132.37 requests per second, p50=0.047 msec
+
+datasize = 5000: using Pipeline -P 16
+SET: 69013.11 requests per second, p50=0.199 msec
+GET: 69637.88 requests per second, p50=0.143 msec
